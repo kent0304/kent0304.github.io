@@ -58,15 +58,44 @@
 /* history */
 .history {
   text-align: center;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 .ul-edu li {
   list-style: none;
+  padding-bottom: 10px;
 }
 
-.education h3 {
+h3 {
   font-size: 30px;
 }
 .education .institution {
   font-size: 25px;
+}
+
+
+
+/* skills */
+.skills {
+  text-align: center;
+  padding: 20px 0;
+}
+.ul-skills li {
+  font-size: 20px;
+  list-style: none;
+
+}
+
+
+
+
+/* products */
+.products {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.ul-products li {
+  font-size: 20px;
+  list-style: none;
+  padding-bottom: 50px;
 }
