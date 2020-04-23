@@ -79,9 +79,10 @@ h3 {
   text-align: center;
   padding: 20px 0;
 }
-.ul-skills li {
+.skills .ul-skills li {
   font-size: 20px;
   list-style: none;
+  ext-align: center;
 
 }
 
@@ -94,8 +95,21 @@ h3 {
   padding: 20px 0;
 }
 
-.ul-products li {
+.products .ul-products li {
   font-size: 20px;
   list-style: none;
+  ext-align: center;
   padding-bottom: 50px;
+}
+
+.linebot {
+  height: 150px;
+}
+
+.chat {
+  width: 150px;
+}
+
+.symphony {
+  height: 300px;
 }
