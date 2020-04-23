@@ -1,0 +1,72 @@
+/* about */
+.about {
+  text-align: center;
+
+}
+
+.about img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.name {
+  font-size: 35px;
+  margin: 10px 0;
+}
+.univ {
+  font-size: 20px;
+  margin: 2px 0;
+}
+
+.links {
+  position: relative;
+  overflow: hidden; /* 下のulのcssでリスト全体を右に50%移動しているので、その分幅が広がってしまいスクロールバーが表示されてしまいます。それを防ぐ為の設定です。 */
+}
+.links ul {
+  position: relative;
+  left: 48.5%; /* リスト全体であるul要素を右に50%移動。つまり先頭を中央に持ってくる感じです。 */
+  float: left;
+}
+.links li {
+  position: relative;
+  left: -48.5%; /* 各リスト項目になるli要素を左に50%移動。 */
+  list-style: none;
+  float: left;
+  margin-right: 15px;
+
+}
+
+
+
+/* links */
+.twitter {
+  color: #00acee;
+}
+
+.github {
+  color: #171515;
+}
+
+.linkedin {
+  color: #0e76a8;
+}
+
+.blog {
+  color: #333333;
+}
+
+/* history */
+.history {
+  text-align: center;
+  padding-top: 20px;
+}
+.ul-edu li {
+  list-style: none;
+}
+
+.education h3 {
+  font-size: 30px;
+}
+.education .institution {
+  font-size: 25px;
+}
