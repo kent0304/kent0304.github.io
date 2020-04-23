@@ -1,6 +1,6 @@
 /* スマホ向けレイアウト */
 @media all and (max-width: 670px) {
-  .linebot, .chat, .symphony {
+  .linebot, .chat, .symphony, .dsl, .todolist {
     width: 100%;
   }
 
