@@ -1,0 +1,7 @@
+/* スマホ向けレイアウト */
+@media all and (max-width: 670px) {
+  .linebot, .chat, .symphony {
+    width: 100%;
+  }
+
+}
