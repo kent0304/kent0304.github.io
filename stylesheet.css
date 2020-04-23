@@ -81,7 +81,7 @@ h3 {
 /* skills */
 .skills {
   text-align: center;
-  padding: 20px 0;
+  padding: 130px 0;
 }
 .skills .ul-skills li {
   font-size: 20px;
@@ -96,14 +96,15 @@ h3 {
 /* products */
 .products {
   text-align: center;
-  padding: 20px 0;
+  padding: 130px 0;
 }
 
 .products .ul-products li {
   font-size: 20px;
   list-style: none;
   ext-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
+  /* border-bottom: 1px solid gray; */
 }
 
 .linebot {
