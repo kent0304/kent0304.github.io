@@ -1,0 +1,18 @@
+.linebot {
+  width: 40%;
+}
+
+.chat {
+  width: 40%;
+}
+.symphony, .todolist {
+  width: 100%;
+}
+
+.dsl {
+  width: 70%;
+}
+
+/* .producs .container {
+  margin-bottom: 100px;
+} */
