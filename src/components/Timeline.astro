@@ -1,0 +1,157 @@
+---
+import Section from './Section.astro';
+import T from './T.astro';
+import { experiences } from '../data/content';
+---
+
+<Section id="work" title={{ en: 'Experience', ja: '経歴' }}>
+  <ol class="entries">
+    {
+      experiences.map((exp) => (
+        <li class="entry reveal">
+          <div class="head">
+            <span class="title">
+              <span class="org">{exp.org}</span>
+              <span class="sep" aria-hidden="true"> · </span>
+              <T text={exp.role} class="role" />
+            </span>
+            <T text={exp.period} class="period" />
+          </div>
+          {exp.achievements.length > 0 && (
+            <ul class="work">
+              {exp.achievements.map((a) => (
+                <li class="item">
+                  <p class="line">
+                    <span class="mark" aria-hidden="true">🚀</span>
+                    <T text={a.name} class="name" />
+                    {a.link && (
+                      <a class="article" href={a.link.url} target="_blank" rel="noopener">
+                        {a.link.label} ↗
+                      </a>
+                    )}
+                  </p>
+                  <p class="desc">
+                    <T text={a.summary} />
+                    {a.metrics.map((m) => (
+                      <span class="metric">
+                        <span class="val">{m.value}</span>
+                        <T text={m.label} class="mlbl" />
+                      </span>
+                    ))}
+                  </p>
+                  <ul class="tags">
+                    {a.tags.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .entries {
+    display: grid;
+    gap: 1.4rem;
+  }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.1rem 0.8rem;
+  }
+  .org {
+    font-weight: 600;
+  }
+  .sep {
+    color: var(--faint);
+  }
+  .role {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* Flagship work delivered in the role. */
+  .work {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.6rem;
+    padding-left: 0.9rem;
+    border-left: 1px solid var(--border);
+  }
+  .line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .mark {
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+  .name {
+    font-weight: 600;
+  }
+  .article {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    white-space: nowrap;
+    transition: opacity 0.2s var(--ease);
+  }
+  .article:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .desc {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin-top: 0.05rem;
+  }
+  .metric {
+    white-space: nowrap;
+  }
+  .metric::before {
+    content: ' · ';
+    color: var(--faint);
+  }
+  .val {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+  .mlbl {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-left: 0.3rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.4rem;
+    margin-top: 0.35rem;
+  }
+  .tags li {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+</style>

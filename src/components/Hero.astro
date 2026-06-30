@@ -1,0 +1,127 @@
+---
+import T from './T.astro';
+import { profile, links } from '../data/content';
+
+const tags = ['NLP', 'LLM Agents', 'LLMOps/MLOps', 'Data Platforms'];
+---
+
+<header id="top">
+  <!-- Full-bleed banner: UC Berkeley, where Kento spent a summer exchange.
+       Gradient darkens toward the bottom so the name reads in white. -->
+  <figure class="banner">
+    <img
+      src="/images/berkeley.jpg"
+      width="2200"
+      height="880"
+      alt="UC Berkeley's Sather Tower above the city with the San Francisco Bay at dusk"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="banner-text">
+      <div class="container">
+        <h1 class="name">{profile.name}</h1>
+        <p class="role">{profile.role.en} @ Sakana AI · {profile.location.en}</p>
+      </div>
+    </div>
+  </figure>
+
+  <div class="container meta">
+    <T as="p" text={profile.thesis} class="thesis reveal" />
+
+    <ul class="tags reveal">
+      {tags.map((t) => <li>{t}</li>)}
+    </ul>
+
+    <nav class="links reveal" aria-label="Profile links">
+      <a href={links.email}>Email</a>
+      <a href={links.github} target="_blank" rel="noopener">GitHub</a>
+      <a href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .banner {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: clamp(280px, 46vh, 440px);
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 34%;
+  }
+  /* Brighter at the top, darker at the bottom — a soft shadow under the name. */
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 13, 11, 0) 20%,
+      rgba(16, 13, 11, 0.45) 58%,
+      rgba(16, 13, 11, 0.9) 100%
+    );
+  }
+  .banner-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(1.1rem, 3vw, 1.8rem);
+  }
+  .name {
+    color: #fff;
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+  }
+  .role {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(0.9rem, 2.4vw, 1rem);
+    margin-top: 0.35rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .meta {
+    padding-top: clamp(1.4rem, 4vw, 2rem);
+  }
+  .thesis {
+    font-size: 1.02rem;
+    color: var(--text-dim);
+    margin-bottom: 0.9rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .tags li {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+  .links a {
+    color: var(--accent);
+    transition: opacity 0.2s var(--ease);
+  }
+  .links a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

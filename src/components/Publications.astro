@@ -1,0 +1,117 @@
+---
+import Section from './Section.astro';
+import { publications, articles } from '../data/content';
+---
+
+<Section id="publications" title={{ en: 'Publications & Writing', ja: '論文・記事' }}>
+  <div class="group reveal">
+    <h3 class="group-title">Papers</h3>
+    <ul class="list">
+      {
+        publications.map((p) => (
+          <li class="pub">
+            <p class="title">{p.title}</p>
+            <p class="meta">
+              <span class="authors">{p.authors}</span>
+              <span class="venue">{p.venue}</span>
+              {p.links && (
+                <span class="links">
+                  {p.links.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener">
+                      {l.label}
+                    </a>
+                  ))}
+                </span>
+              )}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  {
+    articles.length > 0 && (
+      <div class="group reveal">
+        <h3 class="group-title">Tech Blog</h3>
+        <ul class="list">
+          {articles.map((a) => (
+            <li class="pub">
+              <p class="title">
+                <a href={a.href} target="_blank" rel="noopener">
+                  {a.title} ↗
+                </a>
+              </p>
+              <p class="meta">
+                <span class="venue">{a.venue}</span>
+                <span class="year">{a.year}</span>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</Section>
+
+<style>
+  .group + .group {
+    margin-top: 1.4rem;
+  }
+  .group-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .list {
+    display: grid;
+    gap: 0.85rem;
+  }
+  .pub {
+    font-size: 0.92rem;
+  }
+  .title {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .title a {
+    color: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .title a:hover {
+    color: var(--accent);
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+  .authors::after {
+    content: ' · ';
+    color: var(--faint);
+  }
+  .venue {
+    color: var(--text-dim);
+  }
+  .year {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .year::before {
+    content: ' · ';
+    color: var(--faint);
+  }
+  .links {
+    margin-left: 0.4rem;
+  }
+  .links a {
+    color: var(--accent);
+    margin-left: 0.5rem;
+  }
+  .links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

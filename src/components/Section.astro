@@ -1,0 +1,18 @@
+---
+import T from './T.astro';
+import type { LS } from '../data/content';
+
+interface Props {
+  id: string;
+  title: LS;
+}
+
+const { id, title } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    <T as="h2" text={title} class="section-title reveal" />
+    <slot />
+  </div>
+</section>

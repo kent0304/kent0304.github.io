@@ -1,0 +1,65 @@
+---
+import { profile } from '../data/content';
+---
+
+<div class="nav" id="nav">
+  <div class="nav-inner container">
+    <a class="brand" href="#top" aria-label="Back to top">{profile.name}</a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding-block: 0.7rem;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  .brand {
+    margin-right: auto;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    pointer-events: none;
+  }
+  /* Scrolled past the banner: frosted light bar, dark text, brand visible. */
+  .nav.scrolled {
+    color: var(--text);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom-color: var(--border);
+  }
+  .nav.scrolled .brand {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav');
+  // Flip to the light state once the banner has mostly scrolled past.
+  const onScroll = () => {
+    if (!nav) return;
+    const threshold = Math.min(window.innerHeight * 0.42, 360) - 60;
+    nav.classList.toggle('scrolled', window.scrollY > threshold);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+</script>

@@ -1,0 +1,69 @@
+---
+import { profile, links } from '../data/content';
+---
+
+<footer class="contact section" id="contact">
+  <div class="container">
+    <h2 class="section-title reveal">Let's connect</h2>
+    <p class="cta-sub reveal">
+      Open to conversations on applied NLP, LLM agents, and evaluation-driven ML
+      products. Reach me at
+      <a href={links.email}>{profile.email}</a>.
+    </p>
+
+    <nav class="links reveal" aria-label="Links">
+      <a href={links.github} target="_blank" rel="noopener">GitHub</a>
+      <a href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+
+    <div class="baseline">
+      <span>© 2026 {profile.name}</span>
+      <span>Built with Astro · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .contact {
+    padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  .cta-sub {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  .cta-sub a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .cta-sub a:hover {
+    opacity: 0.6;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.9rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .links a {
+    color: var(--accent);
+    transition: opacity 0.2s var(--ease);
+  }
+  .links a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .baseline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--faint);
+  }
+</style>

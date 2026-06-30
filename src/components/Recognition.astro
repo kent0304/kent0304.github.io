@@ -1,0 +1,119 @@
+---
+import Section from './Section.astro';
+import T from './T.astro';
+import { awards, education } from '../data/content';
+---
+
+<Section id="education" title={{ en: 'Education', ja: '学歴' }}>
+  <ul class="dash">
+    {
+      education.map((e) => (
+        <li class="reveal">
+          <span class="primary">{e.school}</span>
+          <span class="sep" aria-hidden="true"> — </span>
+          <T text={e.degree} class="secondary" />
+          <T text={e.period} class="period" />
+          {e.detail &&
+            (e.link ? (
+              <a class="edu-detail edu-link" href={e.link} target="_blank" rel="noopener">
+                {e.detail.en} ↗
+              </a>
+            ) : (
+              <span class="edu-detail">{e.detail.en}</span>
+            ))}
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<Section id="awards" title={{ en: 'Awards', ja: '受賞' }}>
+  <ul class="dash">
+    {
+      awards.map((a) => (
+        <li class="reveal">
+          <span class="yr">{a.year}</span>
+          <T text={a.title} class="primary" />
+          <span class="sep" aria-hidden="true"> · </span>
+          <T text={a.org} class="secondary" />
+          {a.note && <T text={a.note} class="note" />}
+          <span class="ja" lang="ja">
+            {a.title.ja}
+            <span class="ja-sep" aria-hidden="true"> · </span>
+            {a.org.ja}
+            {a.note && ` — ${a.note.ja}`}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .dash {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .dash > li {
+    position: relative;
+    padding-left: 0.95rem;
+  }
+  .dash > li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--faint);
+  }
+  .primary {
+    font-weight: 600;
+  }
+  .sep {
+    color: var(--faint);
+  }
+  .secondary {
+    color: var(--text-dim);
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: 0.4rem;
+  }
+  .yr {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-right: 0.5rem;
+  }
+  .note {
+    display: block;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  /* Secondary education line (e.g. notable course), small and below. */
+  .edu-detail {
+    display: block;
+    margin-top: 0.12rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .edu-link {
+    transition: color 0.2s var(--ease);
+  }
+  .edu-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  /* Small Japanese gloss under each award. */
+  .ja {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.74rem;
+    color: var(--faint);
+  }
+  .ja-sep {
+    color: var(--faint);
+  }
+</style>

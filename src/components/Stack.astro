@@ -1,0 +1,93 @@
+---
+import Section from './Section.astro';
+import T from './T.astro';
+import { skills, certifications } from '../data/content';
+---
+
+<Section id="stack" title={{ en: 'Skills & Certifications', ja: 'スキル・資格' }}>
+  <dl class="rows">
+    <div class="row reveal">
+      <dt>Languages</dt>
+      <dd>{skills.languages.join(' · ')}</dd>
+    </div>
+    <div class="row reveal">
+      <dt>Core</dt>
+      <dd>
+        {skills.core.en.map((s, i) => (
+          <>
+            {i > 0 && <span class="sep" aria-hidden="true"> · </span>}
+            {s}
+          </>
+        ))}
+      </dd>
+    </div>
+    <div class="row reveal">
+      <dt>Cloud</dt>
+      <dd>{skills.cloud.join(' · ')}</dd>
+    </div>
+    <div class="row reveal">
+      <dt>Certs</dt>
+      <dd>
+        {certifications.map((c, i) => (
+          <>
+            {i > 0 && <span class="sep" aria-hidden="true"> · </span>}
+            <T text={c.name} />
+            {!c.name.en.includes(c.issuer.en) && (
+              <span class="issuer"> ({c.issuer.en})</span>
+            )}
+            <span
+              class="yr"
+              title={c.expires ? `Issued ${c.year} · Expires ${c.expires}` : undefined}
+            >
+              {' '}’{c.year.slice(2)}
+              {c.expires && `–’${c.expires.slice(-2)}`}
+            </span>
+          </>
+        ))}
+      </dd>
+    </div>
+  </dl>
+</Section>
+
+<style>
+  .rows {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.93rem;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.8rem;
+    align-items: baseline;
+  }
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  dd {
+    margin: 0;
+    color: var(--text-dim);
+  }
+  .sep {
+    color: var(--faint);
+  }
+  .issuer {
+    color: var(--muted);
+  }
+  .yr {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  @media (max-width: 480px) {
+    .row {
+      grid-template-columns: 4.5rem 1fr;
+      gap: 0.6rem;
+    }
+  }
+</style>
