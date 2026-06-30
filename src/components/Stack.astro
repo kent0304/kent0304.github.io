@@ -52,13 +52,14 @@ import { skills, certifications } from '../data/content';
 <style>
   .rows {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
     margin: 0;
     font-size: 0.93rem;
   }
   .row {
     display: grid;
-    grid-template-columns: 5.5rem 1fr;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
     gap: 0.8rem;
     align-items: baseline;
   }
@@ -86,7 +87,7 @@ import { skills, certifications } from '../data/content';
   }
   @media (max-width: 480px) {
     .row {
-      grid-template-columns: 4.5rem 1fr;
+      grid-template-columns: 4.5rem minmax(0, 1fr);
       gap: 0.6rem;
     }
   }

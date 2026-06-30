@@ -38,6 +38,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Keep anchored sections clear of the fixed nav bar. */
+  scroll-padding-top: 3.5rem;
 }
 
 body {
@@ -50,6 +52,15 @@ body {
   letter-spacing: -0.003em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Long unbreakable strings (URLs, IDs) wrap instead of forcing overflow. */
+  overflow-wrap: break-word;
+}
+
+/* Belt-and-suspenders: never allow sideways scroll on small screens. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 h1,

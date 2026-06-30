@@ -57,6 +57,7 @@ import { experiences } from '../data/content';
 <style>
   .entries {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.4rem;
   }
   .head {
@@ -65,6 +66,9 @@ import { experiences } from '../data/content';
     align-items: baseline;
     justify-content: space-between;
     gap: 0.1rem 0.8rem;
+  }
+  .title {
+    min-width: 0;
   }
   .org {
     font-weight: 600;
@@ -86,6 +90,7 @@ import { experiences } from '../data/content';
   /* Flagship work delivered in the role. */
   .work {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.85rem;
     margin-top: 0.6rem;
     padding-left: 0.9rem;
@@ -153,5 +158,18 @@ import { experiences } from '../data/content';
     padding: 0.1rem 0.45rem;
     border: 1px solid var(--border);
     border-radius: 999px;
+  }
+
+  /* On phones, stack the role line so the period drops below the title
+     instead of being pushed off the right edge by space-between. */
+  @media (max-width: 560px) {
+    .head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
+    }
+    .period {
+      white-space: normal;
+    }
   }
 </style>
