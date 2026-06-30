@@ -138,6 +138,7 @@ import { experiences } from '../data/content';
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--accent);
+    white-space: nowrap;
   }
   .mlbl {
     color: var(--muted);
@@ -169,6 +170,11 @@ import { experiences } from '../data/content';
       gap: 0.1rem;
     }
     .period {
+      white-space: normal;
+    }
+    /* Adjacent metric spans have no whitespace between them, so on narrow
+       screens let each metric wrap internally instead of overflowing. */
+    .metric {
       white-space: normal;
     }
   }

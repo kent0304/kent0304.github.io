@@ -124,4 +124,11 @@ const tags = ['NLP', 'LLM Agents', 'LLMOps/MLOps', 'Data Platforms'];
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+
+  /* On phones, slim the banner into a short letterbox strip. */
+  @media (max-width: 560px) {
+    .banner {
+      height: clamp(150px, 26vh, 210px);
+    }
+  }
 </style>
